@@ -7,6 +7,7 @@ package com.prodyna.pac.timetracker.entity;
 import com.prodyna.pac.timetracker.Security;
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,11 +15,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * A {@link Entity} representing a employee. He is uniquely identified by his email.
+ * A {@link Entity} representing a employee. He is uniquely identified by his
+ * email.
  *
  * @author apatrikis
  */
 @Entity
+@Cacheable(true)
 public class Employee implements Serializable {
 
     @Size(min = 1)
@@ -95,7 +98,8 @@ public class Employee implements Serializable {
     }
 
     /**
-     * Get the password. May be {@code null} as there may be an external authentication provider.
+     * Get the password. May be {@code null} as there may be an external
+     * authentication provider.
      *
      * @return The password.
      */

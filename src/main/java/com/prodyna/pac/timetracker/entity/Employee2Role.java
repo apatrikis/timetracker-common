@@ -7,6 +7,7 @@ package com.prodyna.pac.timetracker.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,13 +17,15 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
- * A {@link Entity} representing a releation between a {@link Employee} and his assigned {@link EmployeeRole}. The relation in general is {@code m:n}, meaning that in both directions there may be
- * multiple assignments:
+ * A {@link Entity} representing a releation between a {@link Employee} and his
+ * assigned {@link EmployeeRole}. The relation in general is {@code m:n},
+ * meaning that in both directions there may be multiple assignments:
  * <ul>
  * <li>a role name may be assigned to multiple employees</li>
  * <li>a employee may have multiple roles</li>
  * </ul>
- * For storing such assigment in the database, a technical ID as primary key is required.
+ * For storing such assigment in the database, a technical ID as primary key is
+ * required.
  *
  * @see
  * <a href="http://en.wikibooks.org/wiki/Java_Persistence/ManyToOne">ManyToOne</a>
@@ -32,6 +35,7 @@ import javax.validation.constraints.NotNull;
  * @author apatrikis
  */
 @Entity
+@Cacheable(true)
 public class Employee2Role implements Serializable {
 
     @Id

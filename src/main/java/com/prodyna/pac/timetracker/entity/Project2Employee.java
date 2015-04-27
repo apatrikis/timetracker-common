@@ -7,6 +7,7 @@ package com.prodyna.pac.timetracker.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -33,6 +34,7 @@ import javax.validation.constraints.NotNull;
  * @author apatrikis
  */
 @Entity
+@Cacheable(true)
 public class Project2Employee implements Serializable {
 
     @Id

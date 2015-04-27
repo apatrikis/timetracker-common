@@ -7,6 +7,7 @@ package com.prodyna.pac.timetracker.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +28,7 @@ import javax.validation.constraints.Size;
  * @author apatrikis
  */
 @Entity
+@Cacheable(true)
 public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;

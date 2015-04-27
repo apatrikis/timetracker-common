@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,6 +36,7 @@ import javax.validation.constraints.NotNull;
  * @author apatrikis
  */
 @Entity
+@Cacheable(true)
 public class TimeRecord implements Serializable {
 
     @Id
