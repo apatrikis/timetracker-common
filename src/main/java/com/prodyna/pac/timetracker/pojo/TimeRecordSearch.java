@@ -139,17 +139,19 @@ public class TimeRecordSearch {
      * @return {@code true} when the values are not {@code null}.
      */
     public boolean hasValueSet() {
-        return hasEmployee() && hasProject() && hasFrom() && hasThrough();
+        return hasEmployee() || hasProject() || hasFrom() || hasThrough();
     }
 
     /**
      * Validate the defined values:
      * <ul>
      * <li>a employee or projet must be set, or both</li>
-     * <li>the upper date boundary must be chronologicaly after the lower date bound</li>
+     * <li>the upper date boundary must be chronologicaly after the lower date
+     * bound</li>
      * </ul>
      *
-     * @throws SearchParametersException if one of the checks fails, e. g. the {@link Project} and {@link Employee} are undefined.
+     * @throws SearchParametersException if one of the checks fails, e. g. the
+     * {@link Project} and {@link Employee} are undefined.
      */
     public void validate() throws SearchParametersException {
         if (!hasEmployee() && !hasProject()) {
