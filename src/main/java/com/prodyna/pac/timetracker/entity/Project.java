@@ -4,6 +4,7 @@
  */
 package com.prodyna.pac.timetracker.entity;
 
+import com.prodyna.pac.timetracker.server.exception.EntityDataException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -190,6 +191,21 @@ public class Project implements Serializable {
      */
     public void setLocked(boolean locked) {
         this.locked = locked;
+    }
+
+    /**
+     * Check if the provided data is valid.
+     *
+     * @throws EntityDataException in case there is a data mismatch, e. g. the
+     * date ranges are invalid.
+     */
+    public void checkDateValues() throws EntityDataException {
+        if ((startDate == null) || (endDate == null)) {
+            throw new EntityDataException("Both start and end date must be set");
+        }
+        if (startDate.after(endDate)) {
+            throw new EntityDataException(String.format("Dates mismatch : start date [%s] must be before end date [%s]", startDate.toString(), endDate.toString()));
+        }
     }
 
     @Override
