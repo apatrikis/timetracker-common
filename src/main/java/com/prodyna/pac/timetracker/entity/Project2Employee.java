@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -34,6 +36,10 @@ import javax.validation.constraints.NotNull;
  * @author apatrikis
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Project2Employee.findProjectByEmployee", query = "select pe.project from Project2Employee pe where pe.employee = :employee"),
+    @NamedQuery(name = "Project2Employee.findEmployeeByProject", query = "select pe.employee from Project2Employee pe where pe.project = :project")
+})
 @Cacheable(true)
 public class Project2Employee implements Serializable {
 

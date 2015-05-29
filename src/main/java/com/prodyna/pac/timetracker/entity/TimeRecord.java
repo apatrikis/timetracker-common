@@ -15,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
@@ -36,6 +38,9 @@ import javax.validation.constraints.NotNull;
  * @author apatrikis
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "TimeRecord.findAll", query = "from TimeRecord tr")
+})
 @Cacheable(true)
 public class TimeRecord implements Serializable {
 

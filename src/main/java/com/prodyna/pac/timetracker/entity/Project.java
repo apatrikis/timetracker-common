@@ -15,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -29,6 +31,10 @@ import javax.validation.constraints.Size;
  * @author apatrikis
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Project.findAll", query = "from Project p"),
+    @NamedQuery(name = "Project.findByOwner", query = "from Project p where p.owner = :employee")
+})
 @Cacheable(true)
 public class Project implements Serializable {
 
