@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * A {@link Entity} representing a releation between a {@link Project} and a
@@ -44,6 +45,7 @@ import javax.validation.constraints.NotNull;
 public class Project2Employee implements Serializable {
 
     @Id
+    @Size(min = 1, max = 50)
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)

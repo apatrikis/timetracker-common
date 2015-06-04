@@ -41,15 +41,15 @@ public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Size(min = 1)
+    @Size(min = 1, max = 50)
     private String projectId;
 
-    @Size(min = 5)
+    @Size(min = 5, max = 50)
     @Column(nullable = false)
     @NotNull
     private String title;
 
-    @Size(min = 5)
+    @Size(min = 5, max = 255)
     @Column(nullable = false)
     @NotNull
     private String description;

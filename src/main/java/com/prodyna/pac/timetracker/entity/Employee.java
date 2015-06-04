@@ -29,21 +29,21 @@ import javax.validation.constraints.Size;
 @Cacheable(true)
 public class Employee implements Serializable {
 
-    @Size(min = 1)
+    @Size(min = 1, max = 50)
     @Column(nullable = false)
     @NotNull
     private String firstName;
 
-    @Size(min = 1)
+    @Size(min = 1, max = 50)
     @Column(nullable = false)
     @NotNull
     private String lastName;
 
     @Id
-    @Size(min = 5)
+    @Size(min = 5, max = 140)
     private String email;
 
-    @Size(min = 4)
+    @Size(min = 4, max = 70)
     @Column(nullable = false)
     @NotNull
     private String password;
