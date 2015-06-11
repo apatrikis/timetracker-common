@@ -9,6 +9,7 @@ import com.prodyna.pac.timetracker.entity.Project;
 import com.prodyna.pac.timetracker.entity.TimeRecord;
 import com.prodyna.pac.timetracker.server.exception.SearchParametersException;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * A simple class for grouping data required for searching {@link TimeRecord}s.
@@ -163,6 +164,40 @@ public class TimeRecordSearch {
                 throw new SearchParametersException(String.format("Dates mismatch : from [%s] must be before through [%s]", getFrom().toString(), getThrough().toString()));
             }
         }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.employee);
+        hash = 89 * hash + Objects.hashCode(this.project);
+        hash = 89 * hash + Objects.hashCode(this.from);
+        hash = 89 * hash + Objects.hashCode(this.through);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TimeRecordSearch other = (TimeRecordSearch) obj;
+        if (!Objects.equals(this.employee, other.employee)) {
+            return false;
+        }
+        if (!Objects.equals(this.project, other.project)) {
+            return false;
+        }
+        if (!Objects.equals(this.from, other.from)) {
+            return false;
+        }
+        if (!Objects.equals(this.through, other.through)) {
+            return false;
+        }
+        return true;
     }
 
     @Override

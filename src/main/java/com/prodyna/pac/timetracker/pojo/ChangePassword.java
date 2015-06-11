@@ -4,6 +4,8 @@
  */
 package com.prodyna.pac.timetracker.pojo;
 
+import java.util.Objects;
+
 /**
  * A simple class for grouping data required during a password change request.
  *
@@ -69,6 +71,31 @@ public class ChangePassword {
      */
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.email);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChangePassword other = (ChangePassword) obj;
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.currentPassword, other.currentPassword)) {
+            return false;
+        }
+        return true;
     }
 
     @Override

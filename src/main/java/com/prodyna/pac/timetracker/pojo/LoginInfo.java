@@ -6,6 +6,7 @@ package com.prodyna.pac.timetracker.pojo;
 
 import com.prodyna.pac.timetracker.entity.EmployeeRole;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A simple {@code POJO} for grouping data required during the login process.
@@ -72,6 +73,36 @@ public class LoginInfo implements Serializable {
      */
     public void setEmployeeRole(EmployeeRole employeeRole) {
         this.employeeRole = employeeRole;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.email);
+        hash = 59 * hash + Objects.hashCode(this.password);
+        hash = 59 * hash + Objects.hashCode(this.employeeRole);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LoginInfo other = (LoginInfo) obj;
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (this.employeeRole != other.employeeRole) {
+            return false;
+        }
+        return true;
     }
 
     @Override
